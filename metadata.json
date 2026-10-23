@@ -1,0 +1,6 @@
+{
+  "name": "Tarjetas Electrónicas",
+  "description": "Sistema integral de gestión para taller de reparación de tarjetas electrónicas, órdenes de servicio, ventas y control de comisiones.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

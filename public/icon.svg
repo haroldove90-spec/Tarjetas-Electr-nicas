@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="chipGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="50%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="traceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Base Badge Rounded Rect -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle PCB Circuit Grid Background -->
+  <g opacity="0.15" stroke="#38bdf8" stroke-width="3" fill="none">
+    <path d="M64 128 h80 l40 40 v60" />
+    <path d="M448 128 h-80 l-40 40 v60" />
+    <path d="M64 384 h80 l40 -40 v-60" />
+    <path d="M448 384 h-80 l-40 -40 v-60" />
+    <circle cx="184" cy="228" r="6" fill="#38bdf8"/>
+    <circle cx="328" cy="228" r="6" fill="#38bdf8"/>
+    <circle cx="184" cy="284" r="6" fill="#38bdf8"/>
+    <circle cx="328" cy="284" r="6" fill="#38bdf8"/>
+  </g>
+
+  <!-- Central Circuit Board Platform -->
+  <rect x="136" y="136" width="240" height="240" rx="40" fill="#1e293b" stroke="url(#traceGrad)" stroke-width="8" filter="url(#glow)"/>
+
+  <!-- PCB Pins North -->
+  <g stroke="#38bdf8" stroke-width="5" stroke-linecap="round">
+    <line x1="186" y1="136" x2="186" y2="106" />
+    <line x1="226" y1="136" x2="226" y2="90" />
+    <line x1="256" y1="136" x2="256" y2="106" />
+    <line x1="286" y1="136" x2="286" y2="90" />
+    <line x1="326" y1="136" x2="326" y2="106" />
+  </g>
+  <!-- Pins South -->
+  <g stroke="#38bdf8" stroke-width="5" stroke-linecap="round">
+    <line x1="186" y1="376" x2="186" y2="406" />
+    <line x1="226" y1="376" x2="226" y2="422" />
+    <line x1="256" y1="376" x2="256" y2="406" />
+    <line x1="286" y1="376" x2="286" y2="422" />
+    <line x1="326" y1="376" x2="326" y2="406" />
+  </g>
+  <!-- Pins West -->
+  <g stroke="#38bdf8" stroke-width="5" stroke-linecap="round">
+    <line x1="136" y1="186" x2="106" y2="186" />
+    <line x1="136" y1="226" x2="90" y2="226" />
+    <line x1="136" y1="256" x2="106" y2="256" />
+    <line x1="136" y1="286" x2="90" y2="286" />
+    <line x1="136" y1="326" x2="106" y2="326" />
+  </g>
+  <!-- Pins East -->
+  <g stroke="#38bdf8" stroke-width="5" stroke-linecap="round">
+    <line x1="376" y1="186" x2="406" y2="186" />
+    <line x1="376" y1="226" x2="422" y2="226" />
+    <line x1="376" y1="256" x2="406" y2="256" />
+    <line x1="376" y1="286" x2="422" y2="286" />
+    <line x1="376" y1="326" x2="406" y2="326" />
+  </g>
+
+  <!-- Central Processor / Heart Core -->
+  <rect x="180" y="180" width="152" height="152" rx="24" fill="url(#chipGrad)"/>
+
+  <!-- Energy Pulse / Repair Lightning inside Processor -->
+  <path d="M266 198 L232 260 H272 L246 314 L284 252 H244 Z" fill="#ffffff" filter="url(#glow)"/>
+
+  <!-- Diagnostic Solder Points / LEDs -->
+  <circle cx="160" cy="160" r="8" fill="#34d399"/>
+  <circle cx="352" cy="160" r="8" fill="#38bdf8"/>
+  <circle cx="160" cy="352" r="8" fill="#38bdf8"/>
+  <circle cx="352" cy="352" r="8" fill="#f59e0b"/>
+</svg>
