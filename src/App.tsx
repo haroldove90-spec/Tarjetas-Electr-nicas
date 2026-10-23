@@ -14,26 +14,19 @@ import { RoleSelector } from './components/RoleSelector';
 
 const MainLayout: React.FC = () => {
   const { activeTab, setActiveTab, showRoleSelector, setShowRoleSelector } = useApp();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedOrderId, setSelectedOrderId] = useState<string | null>(null);
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col w-full selection:bg-teal-500 selection:text-white">
       
       {/* 1. Cabecera Institucional Unificada (Logo, Rol, Instalar, Buscar, Salir) */}
-      <UnifiedHeader
-        onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
-        isSidebarOpen={isSidebarOpen}
-      />
+      <UnifiedHeader />
 
       {/* 2. Main Full-Width Content Container */}
       <div className="flex-1 flex w-full">
         
-        {/* Desktop Sidebar & Mobile Drawer Navigation */}
-        <Navigation
-          isSidebarOpen={isSidebarOpen}
-          setIsSidebarOpen={setIsSidebarOpen}
-        />
+        {/* Desktop Sidebar & Mobile Bottom Navigation */}
+        <Navigation />
 
         {/* Dynamic Viewport Content */}
         <main className="flex-1 w-full max-w-7xl mx-auto px-3 sm:px-6 py-4 sm:py-6 overflow-x-hidden">

@@ -15,15 +15,7 @@ import {
   X
 } from 'lucide-react';
 
-interface UnifiedHeaderProps {
-  onToggleSidebar?: () => void;
-  isSidebarOpen?: boolean;
-}
-
-export const UnifiedHeader: React.FC<UnifiedHeaderProps> = ({ 
-  onToggleSidebar,
-  isSidebarOpen 
-}) => {
+export const UnifiedHeader: React.FC = () => {
   const { 
     role, 
     selectedTechnicianId, 
@@ -67,18 +59,8 @@ export const UnifiedHeader: React.FC<UnifiedHeaderProps> = ({
     <header className="sticky top-0 z-40 bg-[#1c2838] text-white shadow-md border-b border-slate-700/60 select-none">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 h-16 flex items-center justify-between gap-2 sm:gap-4">
         
-        {/* Left: Sidebar toggle (Desktop/Tablet) + Brand Logo */}
+        {/* Left: Brand Logo & Title (Clean design without hamburger) */}
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-          {onToggleSidebar && (
-            <button
-              onClick={onToggleSidebar}
-              className="lg:hidden p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700/60 active:scale-95 transition-all"
-              aria-label="Abrir menú"
-            >
-              {isSidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          )}
-
           <div 
             onClick={() => setActiveTab('inicio')}
             className="flex items-center gap-2.5 cursor-pointer group"

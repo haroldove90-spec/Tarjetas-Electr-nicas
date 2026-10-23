@@ -280,11 +280,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     paymentMethod: 'efectivo' | 'tarjeta' | 'transferencia',
     closedBy: string
   ): boolean => {
-    if (role === 'technician') {
-      alert('Acceso Denegado: Los técnicos no tienen autorización para cerrar órdenes de servicio. Esta acción corresponde únicamente a Recepción o Administración.');
-      return false;
-    }
-
     const now = new Date().toISOString().replace('T', ' ').substring(0, 16);
 
     let closedOrder: RepairOrder | null = null;
@@ -299,7 +294,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         remainingBalance: 0,
         paymentMethod,
         closedAt: now,
-        closedBy,
+        closedBy: `${closedBy} (${role === 'admin' ? 'Administrador' : role === 'reception' ? 'Recepción' : 'Técnico'})`,
         updatedAt: now,
       };
       return closedOrder;
@@ -341,11 +336,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const reassignTechnician = (orderId: string, newTechnicianId: string): boolean => {
-    if (role !== 'admin') {
-      alert('Permiso exclusivo de Administrador: Solo el dueño del taller puede reasignar órdenes de servicio.');
-      return false;
-    }
-
     const tech = technicians.find(t => t.id === newTechnicianId);
     if (!tech) return false;
 
@@ -359,7 +349,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         commissionPercentage: tech.defaultCommissionRate,
         commissionAmount: commAmount,
         updatedAt: new Date().toISOString().replace('T', ' ').substring(0, 16),
-        internalNotes: `${order.internalNotes || ''}\n[Reasignado por Admin a ${tech.name} el ${new Date().toLocaleDateString()}]`.trim(),
+        internalNotes: `${order.internalNotes || ''}\n[Reasignado a ${tech.name} el ${new Date().toLocaleDateString()}]`.trim(),
       };
     }));
 
